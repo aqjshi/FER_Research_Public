@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Evaluation</title>
+    <style>
+        .container {
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+        }
+
+        img {
+            max-width: 50%;  /* Adjust the width as needed */
+            height: auto;    /* This ensures the aspect ratio is maintained */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Video area -->
+        <img src="https://www.mdpi.com/applsci/applsci-09-04678/article_deploy/html/images/applsci-09-04678-g022-550.jpg" alt="Emotion Image">
+
+        <div>
+            <p>Pick the emotion that you felt the most during the video</p>
+        </div>
+
+        <!-- Buttons area -->
+        <div class="button-container">
+            <button onclick="recordResponse('Anger')">Anger</button>
+            <button onclick="recordResponse('Fear')">Fear</button>
+            <button onclick="recordResponse('Disgust')">Disgust</button>
+            <button onclick="recordResponse('Neutral')">Neutral</button>
+            <button onclick="recordResponse('Sadness')">Sadness</button>
+            <button onclick="recordResponse('Surprise')">Surprise</button>
+            <button onclick="recordResponse('Happy')">Happy</button>
+        </div>
+    </div>
+    <script>
+    function recordResponse(response) {
+        window.close();
+        fetch('https://script.google.com/macros/s/AKfycbyC2Q93whx5ayv7kfPxDwzTDiKOdrGn-ysg3oU2XqNdH8OpXYSw1w7_VJuS2DS55yiuXA/exec', {
+            method: 'POST',
+            contentType: 'application/json',
+            payload: JSON.stringify({response: response})
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+
+        
+    }
+
+    </script>
+</body>
+</html>

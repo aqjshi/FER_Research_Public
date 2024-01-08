@@ -1,0 +1,82 @@
+
+@keyframes rgb-lights {
+    0% { background-color: rgba(255, 0, 0, 0.5); }
+    33% { background-color: rgba(0, 255, 0, 0.5); }
+    66% { background-color: rgba(0, 0, 255, 0.5); }
+    100% { background-color: rgba(255, 0, 0, 0.5); }
+}
+
+
+.rgb-lights-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    animation: rgb-lights 2s linear infinite;
+    }
+
+
+.header {
+    width: 100%; /* Full width */
+    background-color: #0043A9;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+
+.media {
+    flex-basis: 66%; /* 66% of the container */
+    height: 480px; /* Same height as camera area */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-color: #000000; /* Placeholder color */
+}
+
+
+
+.camera-container {
+    flex-basis: 34%; /* 34% of the container */
+    width: 320px; /* Fixed width for camera container */
+    height: 480px; /* Fixed height for camera container */
+    display: flex;
+    flex-direction: column;
+}
+
+
+#camera {
+    height: 240px; /* Half of the container height */
+}
+
+.statistics-area {
+    height: 240px; /* Half of the container height */
+    background-color: #007bff; /* Blue background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    border-radius: 5px;
+    padding: 10px 20px;
+}
