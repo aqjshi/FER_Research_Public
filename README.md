@@ -5,7 +5,7 @@ Track Updates/Documentation/Citation: https://docs.google.com/document/d/135qUlD
 
 _______________________________________________________________________
 
-In this project I will attempt to build a Facial Expression Recognition Recommendation Algorithm that tracks emotions to suggest content; using a web page interface with client based data storage, users store training data on personal machine, with a interface with a polled set of emotion provoking data set to gather their facial emotion. This will resolved the accuracy problem stated in https://www.mdpi.com/2076-3417/9/21/4678 , reduce load on the server, lowered cost of hosting server, protecting data privacy. 
+In this project I will attempt to build a Facial Expression Recognition (FER) Recommendation Algorithm that tracks emotions to suggest content; using a web page interface with client based data storage, users store training data on personal machine, with a interface with a polled set of emotion provoking data set to gather their facial emotion. This will resolved the accuracy problem stated in https://www.mdpi.com/2076-3417/9/21/4678 , reduce load on the server, lowered cost of hosting server, protecting data privacy. 
 
 However the trade-off is that it has security risks as it writes onto your machine, open ports are vunerable to attack, malicious edits of code will lead your machine being vunerateble to attack, complicated for the user to navigate, as data have to bereceived over email, then users would have to manually load the data onto the program.
 
