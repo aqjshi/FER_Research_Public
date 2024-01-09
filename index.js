@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  const { user, sample18, sample28, sample38, sample48, sample58 } = req.body;
+  const { user, currentSample, valence_score, arousal_score, raw_emotion, agency, probability, power, situational_state, motivational_state } = req.body;
 
   const auth = new google.auth.GoogleAuth({
     keyFile: "credentials.json",
@@ -26,20 +26,71 @@ app.post("/", async (req, res) => {
 
   const spreadsheetId = "1ZJbClpRpCcBavnot1-RYJ40MkRdXAjV9SMLasrEZn0Y";
 
-  // Write row(s) to spreadsheet
-  await googleSheets.spreadsheets.values.append({
+  // Get the first row from "Sheet1"
+  const header = await googleSheets.spreadsheets.values.get({
     auth,
     spreadsheetId,
-    range: "Sheet1!A:E",
-    valueInputOption: "USER_ENTERED",
-    resource: {
-      values: [
-        [user, sample18, sample28, sample38, sample48, sample58],
-      ],
-    },
+    range: "Sheet1!A1:I1",
   });
 
-  res.send("Successfully submitted! Thank you!");
+  //store first row
+  const firstRow = header.data.values;
+
+  const metaData = await googleSheets.spreadsheets.get({
+    auth,
+    spreadsheetId,
+  });
+
+  const sheets = metaData.data.sheets.map(sheet => sheet.properties.title);
+  let sheetExists = sheets.includes(user);
+
+  // Create a new sheet and copy the first row if it doesn't exist
+  if (!sheetExists) {
+    await googleSheets.spreadsheets.batchUpdate({
+      auth,
+      spreadsheetId,
+      resource: {
+        requests: [
+          {
+            addSheet: {
+              properties: {
+                title: user,
+              },
+            },
+          },
+        ],
+      },
+    });
+
+    // Copy the first row to the new sheet
+    if (firstRow && firstRow.length > 0) {
+      await googleSheets.spreadsheets.values.update({
+        auth,
+        spreadsheetId,
+        range: `${user}!A1:I1`,
+        valueInputOption: "USER_ENTERED",
+        resource: {
+          values: firstRow,
+        },
+      });
+    }
+    
+  
+
+    await googleSheets.spreadsheets.values.append({
+      auth,
+      spreadsheetId,
+      range: `${user}!A:I`, // Adjust this range according to your needs
+      valueInputOption: "USER_ENTERED",
+      resource: {
+        values: [
+          [currentSample, valence_score, arousal_score, raw_emotion, agency, probability, power, situational_state, motivational_state],
+        ],
+      },
+    });
+
+    res.send("Successfully submitted! Thank you!");
+  };
 });
 
 app.listen(1337, (req, res) => console.log("running on 1337"));
