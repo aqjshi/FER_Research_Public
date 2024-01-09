@@ -5,35 +5,236 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Submission Form</title>
+    <script>
+      function scrollToWalkThrough() {
+          var element = document.getElementById("walk_through");
+          if (element) {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+      }
+    </script>
   </head>
-  <body>
-    <h1>Data Collection Form</h1>
-    <form action="/" method="POST">
+  <style>
+    .header {
+    font-size: 20px;
+    width: 100%; /* Full width */
+    background-color: #0043A9;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    }
+    .identification-container {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      display: flex;
+    }
+
+    .identification-container > div {
+      display: flex;
+      flex-direction: column;
+      align-items: first baseline;
+      margin-right: 50px; /* Optional: Adds space between the two divs */
+    }
+
+    /* Optional: Adds space between label and input */
+    label, input {
+      margin-bottom: 10px;
+      margin-right: 50px;
+    }
+
+    button {
+      color: white;
+      background-color: rgb(30, 181, 37);
+      border-radius: 5px;
+      padding: 5px 20px;
+      margin-bottom: 10px;
+    }
+    fieldset{
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+
+<body>
+  <div class="header">Emotional Data Analysis Form</div>
+  <form action="/" method="POST">
+    <div class="identification-container">
       <div>
-        <label for="user">User</label>
-        <input type="text" id="user" name="user" />
+        <label for="user"><b>Username:</b></label>
+        <input type="text" id="user" name="user"/>
       </div>
       <div>
-        <label for="sample18">Sample 18</label>
-        <input type="text" id="sample18" name="sample18" />
+        <label for="current_sample"><b>Current Sample Number:</b></label>
+        <input type="text" id="current_sample" name="current_sample"/>
+      </div>
+    </div>
+
+      <div>
+        <div class="header">Roseman's model</div>
+        <img src="https://iep.utm.edu/wp-content/media/emotion-t3-sm.jpg"alt="Emotion Image">
+      </div>
+
+      <button type="button" id="not_confident" style="background-color: rgb(209, 28, 28);"  background-color="red" onclick="scrollToWalkThrough()">Not Confident</button>
+
+      <fieldset>
+        <legend>If you are <b>CONFIDENT</b> select and SUBMIT</legend>
+        <div>
+          <input type="radio" name="raw_emotion" id="Hope" value = "Hope"/>
+          <label for="Hope">Hope</label> 
+        </div>
+        <div>
+          <input type="radio" name="raw_emotion" id="Joy" value = "Joy"/>
+          <label for="Joy">Joy</label> 
+        </div>
+        <div>
+          <input type="radio" name="raw_emotion" id="Relief" value = "Relief"/>
+          <label for="Relief">Relief</label> 
+        </div>
+        <div>
+          <input type="radio" name="raw_emotion" id="Liking" value = "Liking"/>
+          <label for="Liking">Liking</label> 
+        </div>
+        <div>
+          <input type="radio" name="raw_emotion" id="Surprise" value = "Surprise"/>
+          <label for="Surprise">Surprise</label> 
+        </div>
+        <div>
+          <input type="radio" name="raw_emotion" id="Fear" value = "Fear"/>
+          <label for="Fear">Fear</label> 
+        </div>
+        <div>
+          <input type="radio" name="raw_emotion" id="Discomfort/Disgust" value = "Discomfort/Disgust"/>
+          <label for="Discomfort/Disgust">Discomfort/Disgust</label> 
+        </div>
+        <div>
+          <input type="radio" name="raw_emotion" id="Frustration" value = "Frustration"/>
+          <label for="Frustration">Frustration</label> 
+        </div>
+        <div>
+          <input type="radio" name="raw_emotion" id="Disliking" value = "Disliking"/>
+          <label for="Disliking">Disliking</label> 
+        </div>
+        <div>
+          <input type="radio" name="raw_emotion" id="Anger" value = "Anger"/>
+          <label for="Anger">Anger</label> 
+        </div>
+        <div>
+          <input type="radio" name="raw_emotion" id="Anger" value = "Anger"/>
+          <label for="Anger">Anger</label> 
+        </div>
+        <div>
+          <input type="radio" name="raw_emotion" id="Shame/Guilt" value = "Shame/Guilt"/>
+          <label for="Shame/Guilt">Shame/Guilt</label> 
+        </div>
+        <div>
+          <input type="radio" name="raw_emotion" id="Regret" value = "Regret"/>
+          <label for="Regret">Regret</label> 
+        </div>
+      </fieldset>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+
+      <div>
+
+        <div class="header" id="walk_through">Walk-Through of Roseman's model</div>
+        <h4><ins>Y axis</ins></h4>
+      </div>
+
+      <fieldset>
+        <legend>Select what you felt most </legend>
+        <div>
+          <input type="radio" id="Circumstance-Caused" name="agency" value = "Circumstance-Caused"/>
+          <label for="Circumstance-Caused"><strong>Circumstance-Caused:</strong> outside factors is the reason for your reaction</label> 
+          <p>Example: No bias, You see a yellow paper on your windshield. It could be anything, like a postcard from your friend. You do not know how to feel.</p>
+        </div>
+        <div>
+          <input type="radio" id="Other-Caused" name="agency" value = "Other-Caused"/>
+          <label for="Other-Caused"><strong>Other-Caused:</strong> combination of factors is the reason for your reaction</label> 
+          <p>Example: Bias, You see a yellow paper on your windshield. Usually when there is a yellow paper on your windshield, it's a parking ticket. You feel that this might be a parking ticket.</p>
+        </div>
+        <div>
+          <input type="radio" id="Self-Caused" name="agency" value = "Self-Caused"/>
+          <label for="Self-Caused"><strong>Self-Caused:</strong>  your personal experience is the reason for your reaction</label>
+          <p>Example: Bias, You see a yellow paper on your windshield. Your parking meter is expired and flashing. You know this is a parking ticket.</p>
+        </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Select what you felt most </legend>
+      <div>
+        <div>
+          <input type="radio" name="probability" id="Uncertain" value="Uncertain"/>
+          <label for="Uncertain"><strong>Uncertain:</strong> You are unconfident of the outcome</label>
+        </div>
+        <div>
+          <input type="radio" name="probability" id="Certain" value="Certain"/>
+          <label for="Certain"><strong>Certain:</strong> You are confident of the outcome</label>
+        </div>
+        <p><b>ONLY IF YOU ANSWERED 'Circumstance-Caused' for previous response</b></p>
+        <div>
+          <input type="radio" name="probability" id="Unknown" value="Unknown"/>
+          <label for="Unknown"><strong>Unknown:</strong> No prediction or unexpected</label>
+        </div>
+      </div>
+      </fieldset>
+
+    <fieldset>
+        <legend>Select what you felt most </legend>
+        <div>
+          <div>
+            <input type="radio" name="power" id="Strong" value="Strong"/>
+            <label for="Strong"><strong>Strong:</strong> Intense reaction</label>
+          </div>
+          <div>
+            <input type="radio" name="power" id="Weak" value="Weak"/>
+            <label for="Weak"><strong>Weak:</strong> Weak reaction</label>
+          </div> 
+      </div>
+    </fieldset>
+
+
+    <h4><ins>X axis</ins></h4>
+
+    <fieldset>
+    <legend>Select what you felt most </legend>
+    <div>
+      <div>
+        <input type="radio" name="situational_state" id="Motive-Consitent" value="Motive-Consitent"/>
+        <label for="Motive-Consitent"><strong>Motive-Consitent:</strong> This event benefit you</label>
       </div>
       <div>
-        <label for="sample28">Sample 28</label>
-        <input type="text" id="sample28" name="sample28" />
+        <input type="radio" name="situational_state" id="Motive-Inconsitent" value="Motive-Inconsitent"/>
+        <label for="Motive-Inconsitent"><strong>Motive-Inconsitent:</strong> This event did not benefit you</label>
       </div>
+    </div>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Select what you felt most </legend>
+        <div>
+          <div>
+            <input type="radio"  name="motivational_state" id="Appetitive" value="Appetitive"/>
+            <label for="Appetitive"><strong>Appetitive:</strong> You had Positive emotions leading up to and during this event</label>
+          </div>
+
+          <div>
+            <input type="radio"  name="motivational_state" id="Aversive" value="Aversive"/>
+            <label for="Aversive"><strong>Aversive:</strong> You had Negative emotions leading up to and during this event</label>
+          </div>
+          </div>
+      </fieldset>
+
       <div>
-        <label for="sample38">Sample 38</label>
-        <input type="text" id="sample38" name="sample38" />
-      </div>
-      <div>
-        <label for="sample48">Sample 48</label>
-        <input type="text" id="sample48" name="sample48" />
-      </div>
-      <div>
-        <label for="sample58">Sample 58</label>
-        <input type="text" id="sample58" name="sample58" />
-      </div>
       <button type="submit">Submit</button>
+      </div>
+
+      <div>
+        <p>Source for Philosophical Emotional Analysis: <a href="https://iep.utm.edu/theories-of-emotion/">https://iep.utm.edu/theories-of-emotion/</a></p>
+      </div>
     </form>
+
+   
   </body>
+  
 </html>
