@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Submission Form</title>
-    <script>
-      function scrollToWalkThrough() {
-          var element = document.getElementById("walk_through");
-          if (element) {
-              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-      }
-    </script>
+    <!-- <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcRD0opAAAAANdPUPmue0Y0T35RrwOoA7DMg9bu"></script> -->
   </head>
+  <!-- <script>
+    function onClick(e) {
+      e.preventDefault();
+      grecaptcha.enterprise.ready(async () => {
+        const token = await grecaptcha.enterprise.execute('6LcRD0opAAAAANdPUPmue0Y0T35RrwOoA7DMg9bu', {action: 'LOGIN'});
+      });
+    }
+  </script> -->
   <style>
     .header {
     font-size: 20px;
@@ -53,6 +54,19 @@
       margin-top: 10px;
       margin-bottom: 10px;
     }
+    
+    .horizontal-fieldset {
+    display: block; /* Ensures that the fieldset is a block element */
+}
+
+.horizontal-fieldset div {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Align items horizontally in a row */
+}
+
+.horizontal-fieldset div:not(:last-child) {
+    margin-right: 0px; /* No margin between the divs */
+}
   </style>
 
 <body>
@@ -64,79 +78,124 @@
         <input type="text" id="user" name="user"/>
       </div>
       <div>
-        <label for="current_sample"><b>Current Sample Number:</b></label>
-        <input type="text" id="current_sample" name="current_sample"/>
+        <label for="currentSample"><b>Current Sample Number:</b></label>
+        <input type="text" id="currentSample" name="currentSample"/>
       </div>
     </div>
 
+
+    <fieldset class="horizontal-fieldset">
+      <legend>Did you like the video? 1 for very unpleasant, 5 if it was pleasant.</legend>
+      
+        <input type="radio" name="valence_score" id="valence1" value = "1"/>
+        <label for="valence1">1</label> 
+      
+      
+        <input type="radio" name="valence_score" id="valence2" value = "2"/>
+        <label for="valence2">2</label> 
+      
+      
+        <input type="radio" name="valence_score" id="valence3" value = "3"/>
+        <label for="valence3">3</label> 
+      
+      
+        <input type="radio" name="valence_score" id="valence4" value = "4"/>
+        <label for="valence4">4</label> 
+      
+      
+        <input type="radio" name="valence_score" id="valence5" value = "5"/>
+        <label for="valence5">5</label> 
+      
+    </fieldset>
+
+    <fieldset>
+      <legend>How intense was your emotion? -5 for indifferent, 5 if it was very intense reaction.</legend>
+      <input type="radio" name="arousal_score" id="arousal1" value = "1"/>
+      <label for="1">1</label> 
+    
+    
+      <input type="radio" name="arousal_score" id="arousal2" value = "2"/>
+      <label for="arousal2">2</label> 
+    
+    
+      <input type="radio" name="arousal_score" id="arousal3" value = "3"/>
+      <label for="arousal3">3</label> 
+    
+    
+      <input type="radio" name="arousal_score" id="arousal4" value = "4"/>
+      <label for="arousal4">4</label> 
+    
+    
+      <input type="radio" name="arousal_score" id="arousal5" value = "5"/>
+      <label for="arousal5">5</label> 
+    
+  </fieldset>
+
+
+
+    <fieldset>
+      <legend><b>Without looking at the Roseman Model</b>, click the emotion you felt the most</legend>
       <div>
-        <div class="header">Roseman's model</div>
-        <img src="https://iep.utm.edu/wp-content/media/emotion-t3-sm.jpg"alt="Emotion Image">
+        <input type="radio" name="raw_emotion" id="Hope" value = "Hope"/>
+        <label for="Hope">Hope</label> 
       </div>
-
-      <button type="button" id="not_confident" style="background-color: rgb(209, 28, 28);"  background-color="red" onclick="scrollToWalkThrough()">Not Confident</button>
-
-      <fieldset>
-        <legend>If you are <b>CONFIDENT</b> select and SUBMIT</legend>
-        <div>
-          <input type="radio" name="raw_emotion" id="Hope" value = "Hope"/>
-          <label for="Hope">Hope</label> 
-        </div>
-        <div>
-          <input type="radio" name="raw_emotion" id="Joy" value = "Joy"/>
-          <label for="Joy">Joy</label> 
-        </div>
-        <div>
-          <input type="radio" name="raw_emotion" id="Relief" value = "Relief"/>
-          <label for="Relief">Relief</label> 
-        </div>
-        <div>
-          <input type="radio" name="raw_emotion" id="Liking" value = "Liking"/>
-          <label for="Liking">Liking</label> 
-        </div>
-        <div>
-          <input type="radio" name="raw_emotion" id="Surprise" value = "Surprise"/>
-          <label for="Surprise">Surprise</label> 
-        </div>
-        <div>
-          <input type="radio" name="raw_emotion" id="Fear" value = "Fear"/>
-          <label for="Fear">Fear</label> 
-        </div>
-        <div>
-          <input type="radio" name="raw_emotion" id="Discomfort/Disgust" value = "Discomfort/Disgust"/>
-          <label for="Discomfort/Disgust">Discomfort/Disgust</label> 
-        </div>
-        <div>
-          <input type="radio" name="raw_emotion" id="Frustration" value = "Frustration"/>
-          <label for="Frustration">Frustration</label> 
-        </div>
-        <div>
-          <input type="radio" name="raw_emotion" id="Disliking" value = "Disliking"/>
-          <label for="Disliking">Disliking</label> 
-        </div>
-        <div>
-          <input type="radio" name="raw_emotion" id="Anger" value = "Anger"/>
-          <label for="Anger">Anger</label> 
-        </div>
-        <div>
-          <input type="radio" name="raw_emotion" id="Anger" value = "Anger"/>
-          <label for="Anger">Anger</label> 
-        </div>
-        <div>
-          <input type="radio" name="raw_emotion" id="Shame/Guilt" value = "Shame/Guilt"/>
-          <label for="Shame/Guilt">Shame/Guilt</label> 
-        </div>
-        <div>
-          <input type="radio" name="raw_emotion" id="Regret" value = "Regret"/>
-          <label for="Regret">Regret</label> 
-        </div>
-      </fieldset>
       <div>
-        <button type="submit">Submit</button>
+        <input type="radio" name="raw_emotion" id="Joy" value = "Joy"/>
+        <label for="Joy">Joy</label> 
       </div>
+      <div>
+        <input type="radio" name="raw_emotion" id="Relief" value = "Relief"/>
+        <label for="Relief">Relief</label> 
+      </div>
+      <div>
+        <input type="radio" name="raw_emotion" id="Liking" value = "Liking"/>
+        <label for="Liking">Liking</label> 
+      </div>
+      <div>
+        <input type="radio" name="raw_emotion" id="Surprise" value = "Surprise"/>
+        <label for="Surprise">Surprise</label> 
+      </div>
+      <div>
+        <input type="radio" name="raw_emotion" id="Fear" value = "Fear"/>
+        <label for="Fear">Fear</label> 
+      </div>
+      <div>
+        <input type="radio" name="raw_emotion" id="Discomfort/Disgust" value = "Discomfort/Disgust"/>
+        <label for="Discomfort/Disgust">Discomfort/Disgust</label> 
+      </div>
+      <div>
+        <input type="radio" name="raw_emotion" id="Frustration" value = "Frustration"/>
+        <label for="Frustration">Frustration</label> 
+      </div>
+      <div>
+        <input type="radio" name="raw_emotion" id="Disliking" value = "Disliking"/>
+        <label for="Disliking">Disliking</label> 
+      </div>
+      <div>
+        <input type="radio" name="raw_emotion" id="Anger" value = "Anger"/>
+        <label for="Anger">Anger</label> 
+      </div>
+      <div>
+        <input type="radio" name="raw_emotion" id="Anger" value = "Anger"/>
+        <label for="Anger">Anger</label> 
+      </div>
+      <div>
+        <input type="radio" name="raw_emotion" id="Shame/Guilt" value = "Shame/Guilt"/>
+        <label for="Shame/Guilt">Shame/Guilt</label> 
+      </div>
+      <div>
+        <input type="radio" name="raw_emotion" id="Regret" value = "Regret"/>
+        <label for="Regret">Regret</label> 
+      </div>
+    </fieldset>
+
+
+    <div>
+      <div class="header">Roseman's model</div>
+      <img src="https://iep.utm.edu/wp-content/media/emotion-t3-sm.jpg"alt="Emotion Image">
+    </div>
 
       <div>
-
         <div class="header" id="walk_through">Walk-Through of Roseman's model</div>
         <h4><ins>Y axis</ins></h4>
       </div>
@@ -225,12 +284,20 @@
           </div>
       </fieldset>
 
+      <!-- <form id="form_id" method="post" action="your_action.php">
+        <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+        <input type="hidden" name="action" value="validate_captcha">
+
+      </form> -->
+
       <div>
       <button type="submit">Submit</button>
       </div>
 
       <div>
-        <p>Source for Philosophical Emotional Analysis: <a href="https://iep.utm.edu/theories-of-emotion/">https://iep.utm.edu/theories-of-emotion/</a></p>
+        <p>Source for Philosophical Analysis: <a href="https://iep.utm.edu/theories-of-emotion/">https://iep.utm.edu/theories-of-emotion/</a></p>
+
+        <p>Source for Systematic Anaylsis: <a href="https://www.mdpi.com/2076-3417/9/21/4678">https://www.mdpi.com/2076-3417/9/21/4678</a></p>
       </div>
     </form>
 
