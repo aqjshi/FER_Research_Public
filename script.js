@@ -9,9 +9,9 @@ const partyButton = document.getElementById('partyButton');
 
 index = 0; 
 // Array of video file names
-videos = ["sample18.mp4",    "sample28.mp4",    "sample38.mp4",    "sample48.mp4",    "sample58.mp4",
+videos = ["sample30.mp4", "sample18.mp4",    "sample28.mp4",    "sample38.mp4",    "sample48.mp4",    "sample58.mp4",
 "sample1.mp4",     "sample19.mp4",    "sample29.mp4",    "sample39.mp4",    "sample49.mp4",    "sample59.mp4",
-"sample10.mp4",    "sample20.mp4",    "sample30.mp4",    "sample40.mp4",    "sample50.mp4",    "sample60.mp4",
+"sample10.mp4",    "sample20.mp4",        "sample40.mp4",    "sample50.mp4",    "sample60.mp4",
 "sample11.mp4",    "sample21.mp4",    "sample31.mp4",    "sample41.mp4",    "sample51.mp4",    "sample61.mp4",
 "sample12.mp4",    "sample22.mp4",    "sample32.mp4",    "sample42.mp4",    "sample52.mp4",    "sample62.mp4",
 "sample13.mp4",    "sample23.mp4",    "sample33.mp4",    "sample43.mp4",    "sample53.mp4",    "sample63.mp4",
@@ -21,9 +21,8 @@ videos = ["sample18.mp4",    "sample28.mp4",    "sample38.mp4",    "sample48.mp4
 "sample17.mp4",    "sample27.mp4",    "sample37.mp4",    "sample47.mp4",    "sample57.mp4"]; // Add more as needed
 
 
-// Replace media area with pictures or videos from the internet
-newMedia.addEventListener('click', function () {
-    
+// Function to handle new media
+function onNewMedia() {
     // Select a random video
     selectedVideo = videos[index];
     index++;
@@ -42,15 +41,13 @@ newMedia.addEventListener('click', function () {
     mediaArea.innerHTML = '';
     mediaArea.appendChild(video);
     video.onended = function () {
-        fetch('http://localhost:1337/start-server', { method: 'POST' })
-            .then(response => response.text())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
-    
-    
-        open('http://localhost:1337/');
+        showPopup();
     };
-});
+}
+
+// Attach the onNewMedia function to newMedia button
+newMedia.addEventListener('click', onNewMedia);
+
     
 
 repMedia.addEventListener('click', function() {
@@ -73,42 +70,57 @@ repMedia.addEventListener('click', function() {
            mediaArea.innerHTML = '';
            mediaArea.appendChild(video);
        
-        //    video.onended = function() {
-        //        showPopup();
-        //    };
+           video.onended = function() {
+               showPopup();
+           };
        
        });
 
-function showPopup() {
-    // Create a div to hold the popup content
-    const popup = document.createElement('div');
+       function showPopup() {
+        // Create a div to hold the popup content
+        const popup = document.createElement('div');
     
-    // Create an iframe to load evaluation.html
-    const iframe = document.createElement('iframe');
-    iframe.src = 'evaluation.html';
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-
-    // Style the popup
-    popup.style.position = 'fixed';
-    popup.style.top = '50%';
-    popup.style.left = '50%';
-    popup.style.transform = 'translate(-50%, -50%)';
-    popup.style.width = '70%';  // Adjust the size as needed
-    popup.style.height = '55%'; // Adjust the size as needed
-    popup.style.backgroundColor = '#fff';
-    popup.style.padding = '20px';
-    popup.style.boxShadow = '0 0 10px rgba(0,0,0,0.5)';
-    popup.style.zIndex = 100;
-    popup.style.overflow = 'auto'; // In case the content is larger than the popup
-
-    // Append the iframe to the popup
-    popup.appendChild(iframe);
-
-    // Append the popup to the body
-    document.body.appendChild(popup);
-}
-
+        // Create an iframe to load the Google Form
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://forms.gle/wNwpT2Sew94Tt87s6';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+    
+        // Create a button to close the popup
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Close';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '10px';
+        closeButton.style.right = '20px';
+        closeButton.style.padding = '5px 10px';
+        closeButton.style.cursor = 'pointer';
+    
+        // Event listener to close the popup
+        closeButton.onclick = function() {
+            document.body.removeChild(popup);
+        };
+    
+        // Style the popup
+        popup.style.position = 'fixed';
+        popup.style.top = '50%';
+        popup.style.left = '50%';
+        popup.style.transform = 'translate(-50%, -50%)';
+        popup.style.width = '70%';  // Adjust the size as needed
+        popup.style.height = '55%'; // Adjust the size as needed
+        popup.style.backgroundColor = '#fff';
+        popup.style.padding = '20px';
+        popup.style.boxShadow = '0 0 10px rgba(0,0,0,0.5)';
+        popup.style.zIndex = 100;
+        popup.style.overflow = 'auto'; // In case the content is larger than the popup
+    
+        // Append the iframe and the close button to the popup
+        popup.appendChild(iframe);
+        popup.appendChild(closeButton);
+    
+        // Append the popup to the body
+        document.body.appendChild(popup);
+    }
+    
 
 
 // Start video capture in camera area when 'start video' is clicked
