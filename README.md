@@ -14,12 +14,12 @@ Terms of use: DO NOT SHARE EDITED CODE, I will not be liable for any damages if 
 _______________________________________________________________________
 
 
-Source for CNN is YOLOv8 object detector and classifier
-Source for videos is Instagram
-Source for camera is opencv
-Source for trace emotional resp is TBD
-Source for emotional evaluation is my proprietary algorithm
-Source for recommendation parameters and utilization is my proprietary algorithm using embed parameters from social media.
+- Source for CNN is YOLOv8 object detector and classifier
+- Source for videos is Instagram
+- Source for camera is opencv
+- Source for trace emotional resp is TBD
+- Source for emotional evaluation is my proprietary algorithm
+- Source for recommendation parameters and utilization is my proprietary algorithm using embed parameters from social media.
 
 _______________________________________________________________________
 
@@ -27,15 +27,15 @@ _______________________________________________________________________
 
 TODO:
 
-Transform data entered to compatible format through GoogleSheets api.
-Facial Data Collection Algorithm.
-Facial Data Collection Interface.
-Supervised Learning Algorithm.
-Facial Data Analysis Algorithm.
-Recommendation and weights Algorithm.
-Embed parameters social media utilization.
-Unsupervised Learning Algorithm.
-Static parameters to Dynamic parameters algorithm.
+- Transform data entered to compatible format through GoogleSheets api.
+- Facial Data Collection Algorithm.
+- Facial Data Collection Interface.
+- Supervised Learning Algorithm.
+- Facial Data Analysis Algorithm.
+- Recommendation and weights Algorithm.
+- Embed parameters social media utilization.
+- Unsupervised Learning Algorithm.
+- Static parameters to Dynamic parameters algorithm.
 
 Completed:
 Track progress using link above.
