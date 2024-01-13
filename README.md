@@ -9,15 +9,14 @@ In this project I will attempt to build a Facial Expression Recognition (FER) Re
 
 However the trade-off is that it has security risks as it writes onto your machine, open ports are vunerable to attack, malicious edits of code will lead your machine being vunerateble to attack, complicated for the user to navigate, as data have to bereceived over email, then users would have to manually load the data onto the program.
 
-Terms of use: DO NOT SHARE EDITED CODE, I will not be liable for any damages if your device is attacked, this program will leave your device open to vulnerability, however my program is of good intention. Many of the detection software I use will be open source, in the documentation in the link above. 
+Terms of use: DO NOT SHARE EDITED CODE, currently this program do not have advanced security measures(use with care), my program is of good intention. Many of the detection software I use will be open source, in the documentation in the link above. 
 
 _______________________________________________________________________
 
 
 - Source for CNN is YOLOv8 object detector and classifier
-- Source for videos is Instagram
-- Source for camera is opencv
-- Source for trace emotional resp is TBD
+- Source for videos is Instagram/Meta api
+- Source for trace emotional resp is proprietary algorithm
 - Source for emotional evaluation is my proprietary algorithm
 - Source for recommendation parameters and utilization is my proprietary algorithm using embed parameters from social media.
 
@@ -26,8 +25,6 @@ _______________________________________________________________________
 
 
 TODO:
-
-- Transform data entered to compatible format through GoogleSheets api.
 - Facial Data Collection Algorithm.
 - Facial Data Collection Interface.
 - Supervised Learning Algorithm.
