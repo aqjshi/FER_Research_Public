@@ -1,8 +1,6 @@
 # FER_Research_Public
 Public version of FER_Algorithm_Research
 
-Track Updates/Documentation/Citation: https://docs.google.com/document/d/135qUlDVUjw6eAu72WsR3m1MdsUuOxGmbNdGwa7rSkxk/edit?usp=sharing 
-
 _______________________________________________________________________
 
 In this project I will attempt to build a Facial Expression Recognition (FER) Recommendation Algorithm that tracks emotions to suggest content; using a web page interface with client based data storage, users store training data on personal machine, with a interface with a polled set of emotion provoking data set to gather their facial emotion. This will resolved the accuracy problem stated in https://www.mdpi.com/2076-3417/9/21/4678 , reduce load on the server, lowered cost of hosting server, protecting data privacy. 
